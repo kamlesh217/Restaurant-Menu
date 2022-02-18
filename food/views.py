@@ -1,11 +1,17 @@
 from django.http import HttpResponse
 from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Items
 # Create your views here.
 
 def home(request):
-    return render(request,'foods/menu.html' )
+    return render(request,'foods/home.html' )
+
+def contact(request):
+    return render(request,'foods/contact.html' )
+
+def admin(request):
+    return redirect('admin')
 
 def food(request):
     obj=Items.objects.all()
