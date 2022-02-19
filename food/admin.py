@@ -1,6 +1,7 @@
 from django.contrib import admin
-
-from food.models import Items
+from .models import dinner, Lunch, Breakfast 
 
 # Register your models here.
-admin.site.register(Items)
+admin.site.register(dinner)
+admin.site.register(Lunch)
+admin.site.register(Breakfast)
