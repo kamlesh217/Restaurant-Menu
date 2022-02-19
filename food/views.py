@@ -18,8 +18,7 @@ def home(request):
 def contact(request):
     return render(request,'foods/contact.html' )
 
-def blog(request):
-    return render(request,'foods/blog.html' )
+
 
 def admin(request):
     return redirect('admin') 
