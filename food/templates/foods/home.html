@@ -39,7 +39,7 @@
 
                                     <div class="item col-md-12">
                                         <div class="food-item">
-                                            <img height="180px" src="{{ items.item_image }}" alt="hello">
+                                            <img height="180px" src="media/{{ items.item_image }}" alt="hello">
                                             <div class="price">₹{{items.item_price}}</div>
                                             <div class="text-content">
                                                 <h4>{{items.item_name}}</h4>
@@ -73,7 +73,7 @@
                                    
                                     <div class="item col-md-12">
                                         <div class="food-item">
-                                            <img height="180px" src="{{ items.item_image }}" alt="hello">
+                                            <img height="180px" src="media/{{ items.item_image }}" alt="hello">
                                             <div class="price">₹{{items.item_price}}</div>
                                             <div class="text-content">
                                                 <h4>{{items.item_name}}</h4>
@@ -114,7 +114,7 @@
 
                                     <div class="item col-md-12">
                                         <div class="food-item">
-                                            <img height="180px" src="{{ items.item_image }}" alt="hello">
+                                            <img height="180px" src="media/{{ items.item_image }}" alt="hello">
                                             <div class="price">₹{{items.item_price}}</div>
                                             <div class="text-content">
                                                <h4>{{items.item_name}}</h4>
@@ -150,7 +150,15 @@
                 <div class="col-md-4">
                     <div class="right-info">
                         <h4>Reservation</h4>
-                        <form id="form-submit" action="" method="get">
+                        {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages %}
+                        <h5  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </h5>
+                        {% endfor %}
+                        </ul>
+                        {% endif %}
+                        <form id="form-submit" action="." method="post">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-md-6">
                                     <fieldset>
@@ -192,7 +200,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <fieldset>
-                                        <select required class="person" name='persons' onchange='this.form.()'>
+                                        <select required class="person" name='persons' >
                                             <option value="">How many persons?</option>
                                             <option value="1-Person">1 Person</option>
                                             <option value="2-Persons">2 Persons</option>
@@ -216,6 +224,6 @@
         </div>
     </section>
 
-{% endblock%}
+{% endblock %}
 
 </html>  

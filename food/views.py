@@ -1,7 +1,10 @@
+from django.conf import settings
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import redirect, render
 from .models import dinner, Lunch, Breakfast
+from django.core.mail import send_mail
+from django.contrib import messages
 # Create your views here.
 
 def home(request):
@@ -9,9 +12,30 @@ def home(request):
     lunch=Lunch.objects.all()
     Dinner=dinner.objects.all()
 
+    if request.method=="POST":
+        day=request.POST["day"]
+        hour=request.POST["hour"]
+        name=request.POST["name"]
+        phone=request.POST["phone"]
+        person=request.POST["persons"]
+
+        massage=f'day={day}, time={hour}, name={name}, contact={phone}, members={person}'
+        print(massage)
+        send_mail(
+            "for new table booking",
+            massage,
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=["test@gmail.com"]
+        )
+        messages.success(request, 'Details has been sent')
+        redirect("/home")
+        
+
+
     con={'breakfast_items':breakfast,
     'lunch_items':lunch,
-    'dinner_items': Dinner}
+    'dinner_items': Dinner,
+    }
 
     return render(request,'foods/home.html',con )
 
@@ -64,5 +88,8 @@ def create_item(request):
 
 def admin(request):
     return redirect('admin') 
+
+
+    
 
     
