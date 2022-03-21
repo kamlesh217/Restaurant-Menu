@@ -1,0 +1,34 @@
+{% extends 'foods/base.html' %}
+{% load static %}
+{% block title %}Menu{% endblock%}
+{% block body %}
+<section class="breakfast-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="breakfast-menu-content">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="left-image">
+                                <img src="/media/{{item.item_image}}" width="200" height="350" alt="Breakfast" style="margin-bottom: 100px; ">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <h2>{{item.item_name}}</h2>
+                            <div id="owl-breakfast" class="owl-carousel owl-theme">
+                                    <div class='contain'>
+                                            <h5>{{item.item_sort_desc}}</h5>
+                                            <br><div class="price">
+                                                <h2 style="color:red;" >Rs. {{item.item_price}}</h2>
+                                                </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock%}

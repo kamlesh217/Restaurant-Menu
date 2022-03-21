@@ -1,17 +1,57 @@
+from unicodedata import category
+from urllib import request
 from django.conf import settings
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import redirect, render
-from .models import dinner, Lunch, Breakfast
 from django.core.mail import send_mail
 from django.contrib import messages
+from .models import item, Category, special_item
 # Create your views here.
 
-def home(request):
-    breakfast=Breakfast.objects.all()
-    lunch=Lunch.objects.all()
-    Dinner=dinner.objects.all()
 
+breakfast_id=Category.objects.get(category_name="breakfast")
+lunch_id=Category.objects.get(category_name="lunch")
+dinner_id=Category.objects.get(category_name="dinner")
+
+def home(request):
+    book(request)
+    item_list={
+        "breakfast":special_item.objects.get(category=breakfast_id),
+        "lunch":special_item.objects.get(category=lunch_id),
+        "dinner":special_item.objects.get(category=dinner_id)
+    }
+    return render(request,'foods/index.html', item_list )
+
+
+def details_special(request,sitem_id):
+    special=special_item.objects.get(id=sitem_id)
+    return render(request,'foods/details.html', {"item":special} )
+
+
+def menu_details(request,item_id):
+    Item=item.objects.get(id=item_id)
+    return render(request,'foods/details.html', {"item":Item} )
+
+
+def menu(request):
+    Items={'breakfast':item.objects.filter(category=breakfast_id),
+    'lunch':item.objects.filter(category=lunch_id),
+    'dinner': item.objects.filter(category=dinner_id)
+    }
+    return render(request,'foods/menu.html', Items )
+
+
+def contact(request):
+    return render(request,'foods/contact.html' )
+
+
+
+def admin(request):
+    return redirect('admin') 
+
+
+def book(request):
     if request.method=="POST":
         day=request.POST["day"]
         hour=request.POST["hour"]
@@ -28,68 +68,7 @@ def home(request):
             recipient_list=["test@gmail.com"]
         )
         messages.success(request, 'Details has been sent')
-        redirect("/home")
-        
+        redirect("/food")
 
-
-    con={'breakfast_items':breakfast,
-    'lunch_items':lunch,
-    'dinner_items': Dinner,
-    }
-
-    return render(request,'foods/home.html',con )
-
-def contact(request):
-    return render(request,'foods/contact.html' )
-
-
-def create_item(request):
-    if request.user.is_authenticated:
-        if request.method=='POST':
-            name=request.POST['name']
-            type=request.POST['type']
-            des=request.POST['desc']
-            price=request.POST['price']
-            image=request.POST['image']
-
-            if type=='lunch':
-                if image=='':
-                    lunch_obj=Lunch(item_name=name, item_desc=des, item_price=price)
-                    lunch_obj.save()
-
-                else:
-                    lunch_obj=Lunch(item_name=name, item_desc=des, item_price=price, item_image=image)
-                    lunch_obj.save()
-
-            elif type=='dinner':
-                if image=='':
-                    dinner_obj=dinner(item_name=name, item_desc=des, item_price=price)
-                    dinner_obj.save()
-
-                else:
-                    dinner_obj=dinner(item_name=name, item_desc=des, item_price=price, item_image=image)
-                    dinner_obj.save()
-          
-        
-            elif type=='breakfast':
-                if image=='':
-                    breakfast_obj=Breakfast(item_name=name, item_desc=des, item_price=price)
-                    breakfast_obj.save()
-             
-
-                else:
-                    breakfast_obj=Breakfast(item_name=name, item_desc=des, item_price=price, item_image=image)
-                    breakfast_obj.save()
-        return render(request,'foods/item.html' )
-    else:
-        return redirect('/')
-
-
-
-def admin(request):
-    return redirect('admin') 
-
-
-    
-
-    
+def category(request):
+    return render(request, "foods/category.html")

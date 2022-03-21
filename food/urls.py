@@ -4,9 +4,11 @@ from user import views as v
 
 urlpatterns = [
     path('',views.home, name='home'),
+    path('menu/',views.menu, name='menu'),
+     path('book/',views.book, name='book'),
     path('contact/',views.contact, name='contact'),
-    path('create_item/',views.create_item, name='admin'),
-    path('logout/',v.logout_user, name='logout'),
+    path('<int:sitem_id>/',views.details_special, name='details_special'),
+    path('details/<int:item_id>/',views.menu_details, name='menu_details'),
 ]
 
 

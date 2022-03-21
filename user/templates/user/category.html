@@ -1,0 +1,97 @@
+{% extends 'foods/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock%}
+{% block body %}
+
+
+
+    <section class="featured-food">
+        <div class="container">
+            <div class="row">
+                <div class="heading">
+                    <h2>Food Category</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="food-item">
+                        <h2>Breakfast</h2>
+                        <a href="breakfast/">
+                        <img src="{% static 'food/img/cook_02.jpg'%}" width="100" height="200" alt=""></a>
+                        
+                      
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="food-item">
+                        <h2>Lunch</h2>
+                        <a href="lunch/">
+                        <img  src="{% static 'food/img/cook_01.jpg'%}" width="100" height="200" alt=""></a>
+                     
+                        
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="food-item">
+                        <h2>Dinner</h2>
+                        <a href="dinner/">
+                        <img src="{% static 'food/img/dinner_item.jpg'%}" width="100" height="200" alt=""></a>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="contact-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="section-heading">
+                        <h2>add new item</h2>
+                    </div>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <label for="javascript">Item Name</label>
+                                    {{form.item_name}}
+                                </fieldset>
+                                <fieldset>
+                                    <label for="javascript">Item Sort Desc</label>
+                                    {{form.item_sort_desc}}
+                                </fieldset>
+                                <fieldset>
+                                    <label for="javascript">Item Price</label>
+                                    {{form.item_price}}
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <label for="javascript">Item Full Desc</label>
+                                    {{form.item_full_desc}}
+                                </fieldset>
+                                <fieldset>
+                                    <label for="javascript">Item Image</label>
+                                    {{form.item_image}}
+                                </fieldset>
+                                <fieldset>
+                                    <label for="javascript">Item Category</label><br>
+                                    {{form.category}}<br><br><br><br>
+                                </fieldset>
+                                <fieldset>
+                                    <button type="submit" class="btn">Add Item</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {% endblock%}

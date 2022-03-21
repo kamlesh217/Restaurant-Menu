@@ -1,12 +1,7 @@
-{% extends 'foods/base.html'%}
-{% load static%}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Contact page</title>
-    </head>
-
-    {% block body%}
+{% extends 'foods/base.html' %}
+{% load static %}
+{% block title %}Contact{% endblock%}
+{% block body %}
 
     <section class="page-heading">
         <div class="container">
@@ -68,14 +63,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div id="map">   
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28851.398116329612!2d72.98790676085117!3d25.32352380746382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3942f407a2128285%3A0x4d4cfd0879b24841!2sTakhatgarh%2C%20Rajasthan%20306912!5e0!3m2!1sen!2sin!4v1645253283073!5m2!1sen!2sin"  width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <div id="map">
+        <!-- How to change your own map point
+            1. Go to Google Maps
+            2. Click on your location point
+            3. Click "Share" and choose "Embed map" tab
+            4. Copy only URL and paste it within the src="" field below
+        -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7895.485196115994!2d103.85995441789784!3d1.2880401763270322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7fb4e58ad9cd826e!2sSingapore+Flyer!5e0!3m2!1sen!2sth!4v1505825620371" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-{%endblock%}
 
-</html>
+{% endblock%}
