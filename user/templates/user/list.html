@@ -69,6 +69,24 @@
 
                 {% endif %}
 
+                {% if special %}
+                {% for item in special %}
+                <div class="col-md-4">
+                    <div class="food-item">
+                    
+                        <a href="/owner/update/{{item.id}}">
+                        <img src="/media/{{item.item_image}}" width="100" height="250" alt=""></a>
+                        <div class="price">Rs.{{item.item_price}}</div>
+                        <div class="text-content">
+                            <h4>{{item.item_name}}</h4>
+                            <p>{{item.item_sort_desc}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor%}
+
+                {% endif %}
+
 
             </div>
         </div>

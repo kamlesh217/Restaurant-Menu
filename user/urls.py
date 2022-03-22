@@ -8,7 +8,8 @@ urlpatterns = [
     path('category/dinner/',views.list_dinner, name='list'),
     path('category/breakfast/',views.list_breakfast, name='list'),
     path('category/lunch/',views.list_lunch, name='list'),
+    path('category/special/',views.list_special, name='list'),
     path('<int:item_id>/',views.update_item, name='update_item'),
     path('delete/<int:item_id>/',views.delete_item, name='delete_item'),
-
+    path('update/<int:item_id>/',views.update_special_item, name='update_special_item'),
 ]
