@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Khana Ghar{% endblock%}
+	{% block body%}
+	<!-- Start slides -->
+	<div id="slides" class="cover-slides">
+		<ul class="slides-container">
+			<li class="text-left">
+				<img src="{% static 'images/slider-01.jpg'%}" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br> Our  Restaurant</strong></h1>
+							<p class="m-b-40">“We welcome your appetite. Let our food satisfy your stomach.”</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="/reservation">Reservation</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-left">
+				<img src="{% static 'images/slider-02.jpg'%}" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br> Our Restaurant</strong></h1>
+							<p class="m-b-40">“There is only one right way to eat a steak-with greed in your heart and a smile on your face.”</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="/reservation">Reservation</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-left">
+				<img src="{% static 'images/slider-03.jpg'%}" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br> Our Restaurant</strong></h1>
+							<p class="m-b-40">“We see our customers as invited guests to a party, and we are the hosts. Its our job every day to make every important aspect of the customer experience a little bit better.”</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="/reservation">Reservation</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="slides-navigation">
+			<a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+			<a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+		</div>
+	</div>
+	<!-- End slides -->
+	
+	
+	
+	
+	
+	
+	
+	<!-- Start Gallery -->
+	<div class="gallery-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>Gallery</h2>
+						<p>“Welcome! May the best food find your appetite.”</p>
+					</div>
+				</div>
+			</div>
+			<div class="tz-gallery">
+				<div class="row">
+					{% for image in gallery %}
+
+					<div class="col-sm-12 col-md-4 col-lg-4">
+						<a class="lightbox" href="/Media/{{image.gallery_image}}">
+							<img class="img-fluid" src="/Media/{{image.gallery_image}}" alt="Gallery Images">
+						</a>
+					</div>
+					{% endfor%}
+					
+					
+					
+				</div>
+				<h4><a href="/gallery" style=" color:red;"><u>Show all</u></a></h4>
+			</div>
+		</div>
+	</div>
+	<!-- End Gallery -->
+	<!-- Start QT -->
+	<div class="qt-box qt-background">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 ml-auto mr-auto text-center">
+					<p class="lead ">
+						" A great restaurant is one that just makes you feel like you're not sure whether you went out or you came home and confuses you. If it can do both of those things at the same time, you're hooked. "
+					</p>
+					<span class="lead">Danny Meyer</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End QT -->
+	
+	<!-- Start Customer Reviews -->
+	<div class="customer-reviews-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>Customer Reviews</h2>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-8 mr-auto ml-auto text-center">
+					<div id="reviews" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner mt-4">
+							<div class="carousel-item text-center active">
+								<div class="img-box p-1 border rounded-circle m-auto">
+									<img class="d-block w-100 rounded-circle" src="{% static 'images/quotations-button.png'%}" alt="">
+								</div>
+								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Paul Mitchel</strong></h5>
+								<h6 class="text-dark m-0">Web Developer</h6>
+								<p class="m-0 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
+							</div>
+							<div class="carousel-item text-center">
+								<div class="img-box p-1 border rounded-circle m-auto">
+									<img class="d-block w-100 rounded-circle" src="{% static 'images/quotations-button.png'%}" alt="">
+								</div>
+								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Steve Fonsi</strong></h5>
+								<h6 class="text-dark m-0">Web Designer</h6>
+								<p class="m-0 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
+							</div>
+							<div class="carousel-item text-center">
+								<div class="img-box p-1 border rounded-circle m-auto">
+									<img class="d-block w-100 rounded-circle" src="{% static 'images/quotations-button.png'%}" alt="">
+								</div>
+								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Daniel vebar</strong></h5>
+								<h6 class="text-dark m-0">Seo Analyst</h6>
+								<p class="m-0 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
+							</div>
+						</div>
+						<a class="carousel-control-prev" href="#reviews" role="button" data-slide="prev">
+							<i class="fa fa-angle-left" aria-hidden="true"></i>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#reviews" role="button" data-slide="next">
+							<i class="fa fa-angle-right" aria-hidden="true"></i>
+							<span class="sr-only">Next</span>
+						</a>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Customer Reviews -->
+	
+	<!-- Start Contact info -->
+	<div class="contact-imfo-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 arrow-right">
+					<i class="fa fa-volume-control-phone"></i>
+					<div class="overflow-hidden">
+						<h4>Phone</h4>
+						<p class="lead">
+							+91 809-456-9715
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4 arrow-right">
+					<i class="fa fa-envelope"></i>
+					<div class="overflow-hidden">
+						<h4>Email</h4>
+						<p class="lead">
+							khanaghar217@gmail.com
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<i class="fa fa-map-marker"></i>
+					<div class="overflow-hidden">
+						<h4>Location</h4>
+						<p class="lead">
+							Takhatgarh, Raj, 306912(IND)
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Contact info -->
+	<br>
+	{% endblock%}

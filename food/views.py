@@ -1,74 +1,25 @@
-from unicodedata import category
-from urllib import request
-from django.conf import settings
-from django.http import HttpResponse
-from django.template import loader
-from django.shortcuts import redirect, render
-from django.core.mail import send_mail
-from django.contrib import messages
-from .models import item, Category, special_item
-# Create your views here.
+from django.shortcuts import render
 
+from food.models import *
 
-breakfast_id=Category.objects.get(category_name="breakfast")
-lunch_id=Category.objects.get(category_name="lunch")
-dinner_id=Category.objects.get(category_name="dinner")
-
-def home(request):
-    book(request)
-    item_list={
-        "breakfast":special_item.objects.get(category=breakfast_id),
-        "lunch":special_item.objects.get(category=lunch_id),
-        "dinner":special_item.objects.get(category=dinner_id)
+def index(request):
+    context={
+        "gallery":Gallery.objects.all()[:6],
     }
-    return render(request,'foods/index.html', item_list )
+    return render(request, "index.html",context)
 
+def reservation(request):
+    return render(request, "reservation.html")
 
-def details_special(request,sitem_id):
-    special=special_item.objects.get(id=sitem_id)
-    return render(request,'foods/details.html', {"item":special} )
+def gallery(request):
+    image_list=Gallery.objects.all()
+    return render(request, "gallery.html",{"gallery":image_list})
 
-
-def menu_details(request,item_id):
-    Item=item.objects.get(id=item_id)
-    return render(request,'foods/details.html', {"item":Item} )
-
-
-def menu(request):
-    Items={'breakfast':item.objects.filter(category=breakfast_id),
-    'lunch':item.objects.filter(category=lunch_id),
-    'dinner': item.objects.filter(category=dinner_id)
-    }
-    return render(request,'foods/menu.html', Items )
-
+def about(request):
+    return render(request, "about.html")
 
 def contact(request):
-    return render(request,'foods/contact.html' )
+    return render(request, "contact.html")
 
-
-
-def admin(request):
-    return redirect('admin') 
-
-
-def book(request):
-    if request.method=="POST":
-        day=request.POST["day"]
-        hour=request.POST["hour"]
-        name=request.POST["name"]
-        phone=request.POST["phone"]
-        person=request.POST["persons"]
-
-        massage=f'day={day}, time={hour}, name={name}, contact={phone}, members={person}'
-        print(massage)
-        send_mail(
-            "for new table booking",
-            massage,
-            from_email=settings.EMAIL_HOST_USER,
-            recipient_list=["test@gmail.com"]
-        )
-        messages.success(request, 'Details has been sent')
-        redirect("/food")
-
-def category(request):
-    return render(request, "foods/category.html")
+def menu(request):
+    return render(request, "menu.html")

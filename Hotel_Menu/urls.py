@@ -16,14 +16,12 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-from user import views
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('owner/', include('user.urls')),
-    path('food/', include('food.urls')),
+    path('', include('food.urls')),
 ]
-if settings.DEBUG:
-        urlpatterns += static(settings.MEDIA_URL,
-                              document_root=settings.MEDIA_ROOT)
+
+
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
