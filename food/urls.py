@@ -8,7 +8,7 @@ urlpatterns = [
     path('gallery', gallery , name="gallery"),
     path('about', about , name="about"),
     path('menu', menu , name="menu"),
-    path('contact', contact , name="contact")
+    path('review', review , name="review")
 ]
 
 

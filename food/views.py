@@ -6,6 +6,8 @@ from food.models import *
 def index(request):
     context={
         "gallery":Gallery.objects.all()[:6],
+        "active_review":Review.objects.last(),
+        "Reviews":Review.objects.all(),
     }
     return render(request, "dashboard.html",context)
 
@@ -35,8 +37,20 @@ def gallery(request):
 def about(request):
     return render(request, "about.html")
 
-def contact(request):
-    return render(request, "contact.html")
+def review(request):
+    context={
+        "Reviews":Review.objects.all()[::-1],
+    }
+    if request.method=="POST":
+        name=request.POST['name']
+        email=request.POST['email']
+        phone=request.POST['phone']
+        massage=request.POST['massage']
+
+        review_object=Review.objects.create(name=name,phone=phone,email=email,massage=massage)
+        review_object.save()
+
+    return render(request, "reviews.html",context)
 
 def menu(request):
     context={

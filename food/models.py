@@ -15,3 +15,11 @@ class Item(models.Model):
     price=models.FloatField()
     image=models.ImageField(upload_to='Item_folder/')
     category=models.CharField(max_length=1, choices=category_list)
+
+
+class Review(models.Model):
+    name=models.CharField( max_length=50)
+    email=models.CharField(null=True, max_length=50)
+    phone=models.CharField(null=True, max_length=50)
+    massage=models.TextField()
+    time=models.DateField(auto_now_add=True)
