@@ -1,6 +1,3 @@
-from cmath import exp
-from multiprocessing import context
-from unicodedata import category
 from django.conf import settings
 from django.shortcuts import render
 from django.core.mail import send_mail
@@ -10,7 +7,7 @@ def index(request):
     context={
         "gallery":Gallery.objects.all()[:6],
     }
-    return render(request, "index.html",context)
+    return render(request, "dashboard.html",context)
 
 def reservation(request):
     if request.method=='POST':
