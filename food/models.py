@@ -11,7 +11,7 @@ class Item(models.Model):
         ('D','Dinner')
     )
     title=models.CharField( max_length=100)
-    description=models.TextField()
+    description=models.TextField(max_length=133)
     price=models.FloatField()
     image=models.ImageField(upload_to='Item_folder/')
     category=models.CharField(max_length=1, choices=category_list)

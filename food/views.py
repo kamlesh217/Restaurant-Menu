@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.core.mail import send_mail
 from food.models import *
 
@@ -49,7 +49,7 @@ def review(request):
 
         review_object=Review.objects.create(name=name,phone=phone,email=email,massage=massage)
         review_object.save()
-
+        return redirect("/review")
     return render(request, "reviews.html",context)
 
 def menu(request):
