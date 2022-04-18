@@ -23,3 +23,6 @@ class Review(models.Model):
     phone=models.CharField(null=True, max_length=50)
     massage=models.TextField()
     time=models.DateField(auto_now_add=True)
+
+class About_par(models.Model):
+    paragraph=models.TextField()

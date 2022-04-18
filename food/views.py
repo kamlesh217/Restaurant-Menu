@@ -18,7 +18,7 @@ def reservation(request):
         member=request.POST['person']
         number=request.POST['phone']
         date=request.POST['date']
-        details=f"name={name} \n, date={date},\n perosns={member},\n contact={number}//{email}"
+        details=f"name={name} \n, date={date},\n perosns={member},\n contact={number}/{email}"
         try:
             subject = 'booking details'
             message = details
@@ -35,7 +35,10 @@ def gallery(request):
     return render(request, "gallery.html",{"gallery":image_list})
 
 def about(request):
-    return render(request, "about.html")
+    context={
+        "Paragraph":About_par.objects.all()
+    }
+    return render(request, "about.html",context)
 
 def review(request):
     context={
